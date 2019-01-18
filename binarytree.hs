@@ -10,27 +10,12 @@ insert x (Node val (leftChild) (rightChild))	| x > val = Node val (leftChild) (i
 						| otherwise = Node val (leftChild) (rightChild)
 -- The reason I check for < and > both is to check if the value to be inserted is a duplicate, and do nothing if it is
 
-testTree :: Bin Int -- example to test functionality
-testTree = Node 8
-    (Node 5
-      (Node 1
-        End
-        End
-      )
-      (Node 6
-        End
-        End
-      )
-    )
-    (Node 7
-      End
-      End
-    )
-
 main = do
 
 print "test"
 
+let testTree = Node 8 (Node 5 (Node 1 End End) (Node 6 End End)) (Node 7 End End) :: Bin Int
+
 let x = insert 9 testTree
 
-print $ show $ insert 4 x
+print $ show $ insert 0 x
