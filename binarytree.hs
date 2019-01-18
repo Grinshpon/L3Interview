@@ -4,10 +4,7 @@ binValue :: Bin a -> a
 binValue (Node x _ _) = x
 
 insert :: (Ord a) => a -> Bin a -> Bin a
-insert x (Node val End End) = Node val End (Node x End End)
-insert x (Node val End (child))	| x > binValue(child) = Node val End (insert x child)
-				| x < binValue(child) = Node val (Node x End End) (child)
-				| otherwise = Node val End (child)
+insert x End = Node x End End
 insert x (Node val (leftChild) (rightChild))	| x > val = Node val (leftChild) (insert x rightChild)
 						| x < val = Node val (insert x leftChild) (rightChild)
 						| otherwise = Node val (leftChild) (rightChild)
